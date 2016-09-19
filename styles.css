@@ -5,6 +5,7 @@ body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
+  background-image: url("http://cdn.wikimg.net/strategywiki/images/c/c7/PRS%26E_Route_102.png");
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -13,6 +14,7 @@ body, a:link, a:visited, a:active{
   padding:5px 12px;
   float:right;
 }
+
 .topbar{
   height:32px;
   background-color: #555;
@@ -25,3 +27,15 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.pokemon{
+  max-width: 10%;
+  position: absolute;
+}
+
+.title, .addPokemonButton{
+  padding:5px 12px;
+  float:right;
+}
+
+

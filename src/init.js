@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   window.dancers = [];
 
@@ -27,6 +29,23 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
+
+    
   });
+
+  $('.addPokemonButton').on('click', function(event) {
+    var pokemon = getNewPokemon();
+    /*
+    var rand = Math.random() * 10000;
+    var pokemon = new Pokemon(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      rand
+    );
+    */
+    $('body').append(pokemon.$node);
+    $(".pokemon").draggable();
+  });
+
 });
 

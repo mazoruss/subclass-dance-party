@@ -12,7 +12,17 @@ var Dancer = function(top, left, timeBetweenSteps) {
 Dancer.prototype.step = function (timeBetweenSteps) {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
-  setTimeout(this.step, timeBetweenSteps);
+  var context = this;
+  
+  setTimeout(function() {
+    context.step(timeBetweenSteps);
+  }, timeBetweenSteps);
+
+  //setTimeout(this.step, timeBetweenSteps);
+
+  //console.log("inner step");
+  //console.log("inner this " + this);
+
 };
 
 

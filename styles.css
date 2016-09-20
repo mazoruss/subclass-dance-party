@@ -31,13 +31,12 @@ body, a:link, a:visited, a:active{
 
 .pokemon{
   max-width: 10%;
-  position: relative;
-  transition: transform 1s ease-in-out;
+  position: absolute;
+  -webkit-transition: top 0s, left 0s
 }
 
-
-.fast{
-  transition: transform 0s ease-in-out;
+.lineup {
+  -webkit-transition: top 2s, left 2s
 }
 
 .title, a{

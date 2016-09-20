@@ -20,10 +20,11 @@ var genPokdex = function() {
 var topFact = 0.8;
 var leftFact = 0.9;
 
-var getNewPokemon = function(top, left) {
+var getNewPokemon = function(top, left, num) {
   var pokedex = genPokdex();
   var numPokemon = Object.keys(pokedex).length;
-  var num = Math.floor(Math.random() * numPokemon);
+  var num = num || Math.floor(Math.random() * numPokemon);
+  console.log("num " + num);
   var loc = {};
   loc.top = top || $("body").height() * topFact * Math.random();
   loc.left = left || $("body").width() * leftFact * Math.random();

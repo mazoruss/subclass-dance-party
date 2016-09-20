@@ -1,19 +1,32 @@
 /*
 var pokedex = {
-  0: Charmander
+  //0: function() { return Charmander;}
+  0: function() { return Charmander;}
 };
 var numPokemon = Object.keys(pokedex).length;
 */
 
 
+var genPokdex = function() {
+  return {
+    0: Charmander,
+    1: Bulbasaur,
+    2: Mudkip
+  };
+};
+
 
 var getNewPokemon = function() {
-  var num = Math.floor(Math.random() * 1);
+  var pokedex = genPokdex();
+  var numPokemon = Object.keys(pokedex).length;
+  var num = Math.floor(Math.random() * numPokemon);
   var y = $("body").height() * Math.random();
   var x = $("body").width() * Math.random();
-
-  //var pokemon = new pokedex[num](x, y);
-  var pokemon = new Charmander(x,y);
+  var cons = pokedex[num];
+  var pokemon = new cons(x, y);
+  //var pokemon = new genPokdex()[num](x, y);
+  //var pokemon = new Charmander(x, y);
+  //var pokemon = new Charmander(x,y);
   return pokemon;
 };
 
@@ -21,7 +34,6 @@ var getNewPokemon = function() {
 var Pokemon = function(top, left) {
   this.setPosition(top, left);
 };
-
 
 
 Pokemon.prototype.setPosition = function(top, left) {

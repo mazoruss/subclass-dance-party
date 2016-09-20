@@ -41,6 +41,8 @@ $(document).ready(function() {
   });
 
   $('.addPokemonButton').on('click', function(event) {
+    addPoke();
+    /*
     var pokemon = getNewPokemon();
 
     $('body').append(pokemon.$node);
@@ -49,6 +51,7 @@ $(document).ready(function() {
     addMovementCallback(pokemon.$node);
     pokemon.$node.attr('pos', window.dancers.length);
     window.dancers.push(pokemon);
+    */
   });
 
   var addMovementCallback = function($obj) {
@@ -71,7 +74,6 @@ $(document).ready(function() {
       var movement = calc(ourPosition, otherPosition);
       var ourPokemon = window.dancers[ourPos];
       ourPokemon.moveToLocation(otherPosition);
-      console.log(ourPosition, otherPosition, movement);
       setTimeout( () => otherPokemon.moveToLocation(movement), 850);
     });
   };
@@ -89,7 +91,7 @@ $(document).ready(function() {
 
   $('.lineupPokemonButton').on('click', function(event) {
     // console.log("test");
-    if(window.dancers.length >= minPokemon) {
+    if (window.dancers.length >= minPokemon) {
       return pokemonGo();
     }
     var distance = 100;
@@ -127,7 +129,6 @@ $(document).ready(function() {
       loc = {};
       loc.left = x0 + radius * Math.cos(theta);
       loc.top = y0 + radius * Math.sin(theta);
-      console.log('theta ' + theta);
       window.dancers[i].moveToLocation(loc);
     }
 
@@ -152,23 +153,6 @@ $(document).ready(function() {
       window.dancers[i].moveToLocation(loc);
     }
 
-    /*
-    loc.left = x0 + 0.2*radius;
-    loc.top = y0 + 0.2*radius;
-    window.dancers[2].moveToLocation(loc);
-
-    loc.left = x0 - 0.2*radius;
-    loc.top = y0 + 0.2*radius;
-    window.dancers[3].moveToLocation(loc);
-
-    loc.left = x0 - 0.2*radius;
-    loc.top = y0 - 0.2*radius;
-    window.dancers[4].moveToLocation(loc);
-
-    loc.left = x0 + 0.2*radius;
-    loc.top = y0 - 0.2*radius;
-    window.dancers[5].moveToLocation(loc);
-    */
 
   };
   var pokedex = genPokdex();
@@ -181,15 +165,19 @@ $(document).ready(function() {
     $('.topbar').append($button);
 
     $button.on('click', function(event) {
-      var pokemon = getNewPokemon(undefined, undefined, $(this).attr('class'));
-      $('body').append(pokemon.$node);
-      //$(".pokemon").draggable();
-      pokemon.$node.draggable();
-      addMovementCallback(pokemon.$node);
-      pokemon.$node.attr('pos', i);
-      window.dancers.push(pokemon);
+      var ourI = $(this).attr('class');
+      addPoke(ourI);
     });
   }
+
+  var addPoke = function(ourI) {
+    var pokemon = getNewPokemon(undefined, undefined, ourI);
+    $('body').append(pokemon.$node);
+    pokemon.$node.draggable();
+    addMovementCallback(pokemon.$node);
+    pokemon.$node.attr('pos', window.dancers.length);
+    window.dancers.push(pokemon);
+  };
 
 });
 

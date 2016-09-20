@@ -45,6 +45,30 @@ $(document).ready(function() {
     */
     $('body').append(pokemon.$node);
     $(".pokemon").draggable();
+    window.dancers.push(pokemon);
+  });
+
+
+  $('.lineupPokemonButton').on('click', function(event) {
+    // console.log("test");
+    var distance = 100;
+    var mid = $("body").width() / 2;
+    var y = 0;
+    var x;
+    for (var i = 0; i < window.dancers.length; i ++) {
+      var pokemon = window.dancers[i];
+      //pokemon.$node.toggleClass("translate");
+      if (i % 2 === 1) {
+        x = mid + (distance / 2);
+      } else {
+        x = mid - (distance / 2);
+        y += 100;
+      }
+
+      pokemon.moveToLocation(x, y);
+
+    }
+
   });
 
 });

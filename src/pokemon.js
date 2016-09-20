@@ -11,7 +11,9 @@ var genPokdex = function() {
   return {
     0: Charmander,
     1: Bulbasaur,
-    2: Mudkip
+    2: Mudkip,
+    3: Pikachu,
+    4: Mew
   };
 };
 

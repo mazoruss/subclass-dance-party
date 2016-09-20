@@ -1,7 +1,7 @@
 
-var Bulbasaur = function(top, left) {
+var Bulbasaur = function(loc) {
   this.$node = $('<img class="pokemon" src="http://i.giphy.com/Owb158OZlURQA.gif">');
-  Pokemon.call(this, top, left);
+  Pokemon.call(this, loc);
 };
 
 

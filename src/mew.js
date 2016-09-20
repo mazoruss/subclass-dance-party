@@ -1,7 +1,7 @@
 
-var Mew = function(top, left) {
+var Mew = function(loc) {
   this.$node = $('<img class="pokemon" src="http://i.giphy.com/IQebREsGFRXmo.gif">');
-  Pokemon.call(this, top, left);
+  Pokemon.call(this, loc);
 };
 
 

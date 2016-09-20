@@ -1,8 +1,8 @@
 
 
-var Charmander = function(top, left) {
+var Charmander = function(loc) {
   this.$node = $('<img class="pokemon" src="http://i.giphy.com/55jOowTAknOXC.gif">');
-  Pokemon.call(this, top, left);
+  Pokemon.call(this, loc);
 };
 
 

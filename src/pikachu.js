@@ -1,7 +1,7 @@
 
-var Pikachu = function(top, left) {
+var Pikachu = function(loc) {
   this.$node = $('<img class="pokemon" src="http://samgreenmedia.com/pikacrunk.gif">');
-  Pokemon.call(this, top, left);
+  Pokemon.call(this, loc);
 };
 
 

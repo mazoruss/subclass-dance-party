@@ -32,7 +32,7 @@ body, a:link, a:visited, a:active{
 .pokemon{
   max-width: 10%;
   position: absolute;
-  -webkit-transition: top 0s, left 0s
+  -webkit-transition: top 1s, left 1s
 }
 
 .lineup {

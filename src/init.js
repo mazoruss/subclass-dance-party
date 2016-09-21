@@ -9,6 +9,8 @@ $(document).ready(function() {
   var smallRadius = 100;
   var ratio = 3;
   var numLine = 2;
+  var multiplier = [1, 5, 10, 100];
+  var currMulti = 1;
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -36,22 +38,21 @@ $(document).ready(function() {
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
-
     
   });
 
   $('.addPokemonButton').on('click', function(event) {
-    addPoke();
-    /*
-    var pokemon = getNewPokemon();
+    for (var i = 0; i < currMulti; i++) {
+      addPoke();
+    }
+  });
 
-    $('body').append(pokemon.$node);
-    //$(".pokemon").draggable();
-    pokemon.$node.draggable();
-    addMovementCallback(pokemon.$node);
-    pokemon.$node.attr('pos', window.dancers.length);
-    window.dancers.push(pokemon);
-    */
+  $('.number').on('click', function(event) {
+    var num = Number($(this).text());
+    var currIndex = multiplier.indexOf(num);
+    var nextIndex = (1 + currIndex) % multiplier.length;
+    $(this).text(multiplier[nextIndex]);
+    currMulti = multiplier[nextIndex];
   });
 
   var addMovementCallback = function($obj) {
@@ -78,16 +79,13 @@ $(document).ready(function() {
     });
   };
 
-
-
   var calc = function(start, end) {
     var vec = {};
     var fact = 0.7;
-    vec.top = end.top + fact *(end.top - start.top);
-    vec.left = end.left + fact *(end.left - start.left);
+    vec.top = end.top + fact * (end.top - start.top);
+    vec.left = end.left + fact * (end.left - start.left);
     return vec;
   };
-
 
   $('.lineupPokemonButton').on('click', function(event) {
     // console.log("test");
@@ -96,7 +94,7 @@ $(document).ready(function() {
     }
     var distance = 100;
     var mid = $("body").width() / 2;
-    var loc = {top:0};
+    var loc = {top: 0};
     var x;
     for (var i = 0; i < window.dancers.length; i ++) {
       var pokemon = window.dancers[i];
@@ -132,10 +130,6 @@ $(document).ready(function() {
       window.dancers[i].moveToLocation(loc);
     }
 
-    //rest
-
-    //var xSpacing = radius / 2.0;
-
     loc = {};
     loc.left = x0 - 0.6 * radius;
     loc.top = y0;
@@ -153,8 +147,8 @@ $(document).ready(function() {
       window.dancers[i].moveToLocation(loc);
     }
 
-
   };
+
   var pokedex = genPokdex();
   for (var i in pokedex) {
     var pokemonClass = pokedex[i];
@@ -166,7 +160,9 @@ $(document).ready(function() {
 
     $button.on('click', function(event) {
       var ourI = $(this).attr('class');
-      addPoke(ourI);
+      for (var j = 0; j < currMulti; j++) {
+        addPoke(ourI);
+      }
     });
   }
 
